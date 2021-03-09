@@ -1,6 +1,7 @@
-<ul>
+<ul data-t-todo-list>
   <li class="notification is-info"
-      *ngFor="let item of todoItems">
+      *ngFor="let item of todoItems;let i = index"
+      [attr.data-t-todo-item]="i">
     <p>{{ item.description }}</p>
   </li>
 </ul>

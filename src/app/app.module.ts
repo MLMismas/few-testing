@@ -12,6 +12,8 @@ import { TodosComponent } from './components/todos/todos.component';
 import { TodoListComponent } from './components/todos/todo-list/todo-list.component';
 import { TodoEntryComponent } from './components/todos/todo-entry/todo-entry.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TodosDataService } from 'src/services/todos-data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [BankAccountService, BonusCalculatorService],
+  providers: [BankAccountService, BonusCalculatorService, TodosDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
