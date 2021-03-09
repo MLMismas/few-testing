@@ -1,10 +1,16 @@
 <nav class="tabs is-fixed-top">
   <ul>
-    <li [routerLinkActive]="['is-active']">
+    <li [routerLinkActive]="['is-active']"
+        data-t-routing-home>
       <a [routerLink]="['home']">Home</a>
     </li>
-    <li [routerLinkActive]="['is-active']">
+    <li [routerLinkActive]="['is-active']"
+        data-t-routing-banking>
       <a [routerLink]="['banking']">Banking</a>
+    </li>
+    <li [routerLinkActive]="['is-active']"
+        data-t-routing-todos>
+      <a [routerLink]="['todos']">Todos</a>
     </li>
   </ul>
 </nav>
