@@ -14,6 +14,10 @@ import { TodoEntryComponent } from './components/todos/todo-entry/todo-entry.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TodosDataService } from 'src/services/todos-data.service';
+import { CounterComponent } from './components/counter/counter.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +26,16 @@ import { TodosDataService } from 'src/services/todos-data.service';
     BankingComponent,
     TodosComponent,
     TodoListComponent,
-    TodoEntryComponent
+    TodoEntryComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [BankAccountService, BonusCalculatorService, TodosDataService],
   bootstrap: [AppComponent]

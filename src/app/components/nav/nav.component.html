@@ -12,5 +12,9 @@
         data-t-routing-todos>
       <a [routerLink]="['todos']">Todos</a>
     </li>
+    <li [routerLinkActive]="['is-active']"
+        data-t-routing-counter>
+      <a [routerLink]="['counter']">Redux Counter</a>
+    </li>
   </ul>
 </nav>
