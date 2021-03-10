@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment';
 export class SongsDataService {
   readonly baseUrl = environment.baseUrl + 'songs';
 
+  addSong$(song: { title: string, artist?: string, album?: string }): Observable<SongEntity> {
+    return this.client.post<SongEntity>(this.baseUrl, song);
+  }
+
   getSongs$(): Observable<SongEntity[]> {
     return this.client.get<GetSongsResponse>(this.baseUrl)
       .pipe(

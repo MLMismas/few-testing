@@ -31,7 +31,15 @@ const initialState = adapter.getInitialState(
 const reducerFunction = createReducer(
   initialState,
   on(actions.loadSongData, actions.loadSongsFailed, () => initialState),
-  on(actions.loadSongsSucceeded, (state, action) => adapter.setAll(action.payload, state))
+  on(actions.loadSongsSucceeded, (state, action) => adapter.setAll(action.payload, state)),
+  on(actions.songAdded, (state, action) => adapter.addOne(action.payload, state)),
+  on(actions.songAddedFailure, (state, action) => adapter.removeOne(action.payload.id, state)),
+  on(actions.songAddedSuccessfully, (state, action) => adapter.updateOne({
+    id: action.oldId,
+    changes: {
+      id: action.payload.id
+    }
+  }, state))
 );
 
 export function reducer(state: SongState = initialState, action: Action) {

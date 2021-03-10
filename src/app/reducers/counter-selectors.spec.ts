@@ -2,7 +2,12 @@ import * as index from '.';
 describe('Counter Selectors', () => {
   it('can select the counter branch', () => {
     const response = index._selectCounterBranch({
-      counter: { current: 99 }
+      counter: { current: 99 },
+      songs: {
+        ids: [],
+        entities: {},
+        sortBy: null
+      }
     });
     expect(response).toEqual({
       current: 99

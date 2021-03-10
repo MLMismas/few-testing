@@ -12,7 +12,7 @@ describe('CounterComponent', () => {
   let store: MockStore;
 
   beforeEach(() => {
-    const initialState: AppState = {
+    const initialState: any = {
       counter: { current: 0 }
     };
     TestBed.configureTestingModule({
