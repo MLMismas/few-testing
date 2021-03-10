@@ -7,27 +7,31 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class SongsDataService {
-  readonly baseUrl = environment + 'songs';
+  readonly baseUrl = environment.baseUrl + 'songs';
 
   getSongs$(): Observable<SongEntity[]> {
     return this.client.get<GetSongsResponse>(this.baseUrl)
       .pipe(
-        map(response => response.data),
+        map(getDataFrom),
         map(songs => {
-          return songs.map(song => {
-            return {
-              id: song.id,
-              title: song.title,
-              album: song.album,
-              artist: song.artist?.name
-            } as SongEntity;
-          });
+          return songs.map(makeAnEntityOutOf);
         })
       );
   }
   constructor(private client: HttpClient) { }
 }
 
+export function getDataFrom(thing: GetSongsResponse): SongResponseItem[] {
+  return thing.data;
+}
+export function makeAnEntityOutOf(song: SongResponseItem): SongEntity {
+  return {
+    id: song.id,
+    title: song.title,
+    album: song.album,
+    artist: song.artist?.name
+  } as SongEntity;
+}
 interface GetSongsResponse {
   data: SongResponseItem[];
 }

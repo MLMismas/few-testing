@@ -21,6 +21,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SongsComponent } from './components/songs/songs.component';
 import { SongsListComponent } from './components/songs/songs-list/songs-list.component';
 import { SongsEntryComponent } from './components/songs/songs-entry/songs-entry.component';
+import { SongsDataService } from 'src/services/songs-data.service';
+import { EffectsModule } from '@ngrx/effects';
+import { SongEffects } from './effects/songs.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +44,15 @@ import { SongsEntryComponent } from './components/songs/songs-entry/songs-entry.
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([SongEffects])
   ],
-  providers: [BankAccountService, BonusCalculatorService, TodosDataService],
+  providers: [
+    BankAccountService,
+    BonusCalculatorService,
+    TodosDataService,
+    SongsDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
