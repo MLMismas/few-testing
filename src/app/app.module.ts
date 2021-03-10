@@ -18,6 +18,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SongsComponent } from './components/songs/songs.component';
+import { SongsListComponent } from './components/songs/songs-list/songs-list.component';
+import { SongsEntryComponent } from './components/songs/songs-entry/songs-entry.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     TodosComponent,
     TodoListComponent,
     TodoEntryComponent,
-    CounterComponent
+    CounterComponent,
+    SongsComponent,
+    SongsListComponent,
+    SongsEntryComponent
   ],
   imports: [
     BrowserModule,

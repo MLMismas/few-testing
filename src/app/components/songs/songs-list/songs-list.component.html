@@ -1,0 +1,6 @@
+<ul>
+  <li class="notification is-info"
+      *ngFor="let song of songs$ | async">
+    <span>{{song.title}} by {{song.artist || 'Unknown Artist'}} on Album {{song.album || 'UnknownAlbum'}}</span>
+  </li>
+</ul>

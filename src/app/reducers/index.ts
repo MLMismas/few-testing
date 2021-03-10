@@ -1,17 +1,20 @@
 import { ActionReducerMap, createSelector } from '@ngrx/store';
 import * as fromCounter from './counter.reducer';
+import * as fromSongs from './songs.reducer';
 export interface AppState {
   counter: fromCounter.CounterState;
+  songs: fromSongs.SongState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  counter: fromCounter.reducer
+  counter: fromCounter.reducer,
+  songs: fromSongs.reducer
 };
 
-const selectCounterBranch = (state: AppState) => state.counter;
+export const _selectCounterBranch = (state: AppState) => state.counter;
 
 // for the components
 export const selectCurrentCounter = createSelector(
-  selectCounterBranch,
+  _selectCounterBranch,
   b => b.current
 );
